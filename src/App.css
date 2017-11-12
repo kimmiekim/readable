@@ -26,3 +26,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.posting {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-list {
+  list-style-type: none;
+}
+
+.comment-list li {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
