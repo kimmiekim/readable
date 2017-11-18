@@ -8,7 +8,10 @@ import reducer from './reducers'
 
 import { BrowserRouter } from 'react-router-dom'
 
-const store = createStore(reducer)
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 console.log("store is: ",store.getState)
 ReactDOM.render(<BrowserRouter><App store={store} /></BrowserRouter>, document.getElementById('root'));
