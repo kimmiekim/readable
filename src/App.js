@@ -6,20 +6,17 @@ import Post from './components/Post'
 import PostList from './components/PostList'
 // import fetchPosts from './utils/api'
 
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class App extends Component {
-  // state= {
-  //   posts: [],
-  //   categories: [],
-  //   comments:[]
-  // }
 
   constructor(props) {
     super(props);
     this.state = {
-      backend: 'backend-data'
+      backend: {}
     }
+    console.log("backend", this.state.backend)
   }
 
   componentDidMount(){
@@ -30,37 +27,41 @@ class App extends Component {
       .then((resp) => { return(resp.text()) })
       .then((data) => {
         this.setState({ backend: data })
-        console.log("data", data)
+        console.log(this.state)
       })
   }
 
   render() {
-    const { backend } = this.state
+    // const { backend } = this.state
     return (
       <div className="App">
         <Route exact path = "/" render ={()=>(
           // <PostList />
 
           <div className = "posting">
+            <h1>
+              <Link to="/">Readable</Link>
+            </h1>
             <div className= "image">
-              <img src="http://placekitten.com/500/300" />
-            </div>
-            <div className="comment-box">
-              <div className="post-likes">
-                <h1>{ backend.voteScore }</h1>
-              </div>
-              <div className="post-info">
-                <h1>{ backend.title }</h1>
-                <h3>{ backend.author }</h3>
-              </div>
 
-              <ul className="comment-list">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-              </ul>
             </div>
+            {/* { backend.map((post)  => (
+              <div className="comment-box">
+                <div className="post-likes">
+                  <h1>{ post.voteScore }</h1>
+                </div>
+                <div className="post-info">
+                  <h1>{ post.title }</h1>
+                  <h3>{ post.author }</h3>
+                </div>
+                <ul className="comment-list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                </ul>
+              </div>
+            ))} */}
           </div>
 
         )} />
@@ -69,4 +70,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

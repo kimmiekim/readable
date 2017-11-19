@@ -1,22 +1,9 @@
-import { ADD_POST, EDIT_POST, LOAD_POST } from '../actions'
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
 
-function posting(state, action){
-  const { title, body, author, category, posts } = action
+import posts from './posts'
+import comment from './comment'
 
-  switch (action.type){
-    case LOAD_POST:
-      for (let num in action.posts){
-        posts[ action.posts[num].id ] = action.posts[num]
-      }
-      return posts
+const rootReducer = combineReducers({ posts, comment, routing: routerReducer })
 
-    case ADD_POST:
-      return {}
-    case EDIT_POST:
-      return {}
-    default:
-      return {}
-  }
-}
-
-export default posting
+export default rootReducer
