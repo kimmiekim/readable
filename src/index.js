@@ -6,8 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from './reducers'
 import { Provider } from 'react-redux'
-
+import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
+
+import { fetchPosts } from './actions/api'
+
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -21,8 +24,10 @@ const logger = store => next => action => {
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 const store = createStore(
   rootReducer,
-  applyMiddleware(logger)
+  applyMiddleware(logger, thunk)
 )
+store.dispatch(fetchPosts())
+
 console.log("store is: ",store.getState)
 
 ReactDOM.render(

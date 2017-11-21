@@ -5,10 +5,12 @@ function posts(state, action){
 
   switch (action.type){
     case LOAD_POST:
-      for (let num in action.posts){
-        posts[ action.posts[num].id ] = action.posts[num]
-      }
-      return posts
+      // for (let num in action.posts){
+      //   posts[ action.posts[num].id ] = action.posts[num]
+      // }
+      // return posts
+      return action.posts
+      console.log("action posts", action.posts)
 
     case ADD_POST:
       return {}

@@ -11,25 +11,25 @@ import { connect } from 'react-redux'
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      backend: {}
-    }
-    console.log("backend", this.state.backend)
-  }
-
-  componentDidMount(){
-    const url = `${process.env.REACT_APP_BACKEND}posts`
-    console.log('fetching from url', url);
-
-    fetch(url, { headers: { 'Authorization': 'bambambam' } } )
-      .then((resp) => { return(resp.text()) })
-      .then((data) => {
-        this.setState({ backend: data })
-        console.log(this.state)
-      })
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     backend: {}
+  //   }
+  //   console.log("backend", this.state.backend)
+  // }
+  //
+  // componentDidMount(){
+  //   const url = `${process.env.REACT_APP_BACKEND}posts`
+  //   console.log('fetching from url', url);
+  //
+  //   fetch(url, { headers: { 'Authorization': 'bambambam' } } )
+  //     .then((resp) => { return(resp.text()) })
+  //     .then((data) => {
+  //       this.setState({ backend: data })
+  //       console.log(this.state)
+  //     })
+  // }
 
   render() {
     // const { backend } = this.state
