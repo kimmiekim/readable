@@ -29,7 +29,7 @@ class App extends Component {
               {/* {this.props.posts.map(this.postRow)} */}
             </div>
 
-            {/* { backend.map((post)  => (
+            {/* { this.props.posts.map((post)  => (
               <div className="comment-box">
                 <div className="post-likes">
                   <h1>{ post.voteScore }</h1>
