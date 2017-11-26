@@ -11,28 +11,11 @@ import { connect } from 'react-redux'
 
 class App extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     backend: {}
-  //   }
-  //   console.log("backend", this.state.backend)
-  // }
-  //
-  // componentDidMount(){
-  //   const url = `${process.env.REACT_APP_BACKEND}posts`
-  //   console.log('fetching from url', url);
-  //
-  //   fetch(url, { headers: { 'Authorization': 'bambambam' } } )
-  //     .then((resp) => { return(resp.text()) })
-  //     .then((data) => {
-  //       this.setState({ backend: data })
-  //       console.log(this.state)
-  //     })
-  // }
+  postRow(post, index) {
+    return <div key={index}> {post.title} </div>
+  }
 
   render() {
-    // const { backend } = this.state
     return (
       <div className="App">
         <Route exact path = "/" render ={()=>(
@@ -42,9 +25,10 @@ class App extends Component {
             <h1>
               <Link to="/">Readable</Link>
             </h1>
-            <div className= "image">
-
+            <div className= "content">
+              {/* {this.props.posts.map(this.postRow)} */}
             </div>
+
             {/* { backend.map((post)  => (
               <div className="comment-box">
                 <div className="post-likes">
@@ -70,4 +54,11 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+function mapStateToProps(state, ownProps){
+  return {
+    posts: state.posts
+    // state here refers to our store, and this is how we pass down store props down to the component
+  }
+}
+
+export default connect(mapStateToProps)(App);

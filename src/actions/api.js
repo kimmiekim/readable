@@ -13,7 +13,7 @@ export function fetchPosts() {
       .then(posts => {
         posts = posts.json()
         dispatch(fetchPostSuccess(posts))
-        console.log("posts", posts)
+        console.log("api posts", posts)
       }).catch(error => {
         throw(error)
       })
