@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { Component, PropTypes } from 'react'
+import logo from '../logo.svg'
+import '../App.css'
 
-import Post from './components/Post'
-import PostList from './components/PostList'
+import Post from './Post'
+import PostList from './PostList'
 // import fetchPosts from './utils/api'
 
 import { Route, Link } from 'react-router-dom'
@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    const posts = this.props
     return (
       <div className="App">
         <Route exact path = "/" render ={()=>(
@@ -27,25 +28,11 @@ class App extends Component {
             </h1>
             <div className= "content">
               {/* {this.props.posts.map(this.postRow)} */}
+              {console.log("checking props:", posts.posts)}
             </div>
-
-            {/* { this.props.posts.map((post)  => (
-              <div className="comment-box">
-                <div className="post-likes">
-                  <h1>{ post.voteScore }</h1>
-                </div>
-                <div className="post-info">
-                  <h1>{ post.title }</h1>
-                  <h3>{ post.author }</h3>
-                </div>
-                <ul className="comment-list">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
-                </ul>
-              </div>
-            ))} */}
+            { Array.isArray(posts.posts)? posts.posts.map((post)  => (
+                  <Post post={post} />
+                )): null }
           </div>
 
         )} />
@@ -53,6 +40,10 @@ class App extends Component {
     )
   }
 }
+
+// App.propTypes= {
+//   posts: PropTypes.array.isRequired
+// }
 
 function mapStateToProps(state, ownProps){
   return {

@@ -1,4 +1,4 @@
-import * as types from './index'
+import * as types from './actionTypes'
 
 export function fetchPostSuccess(posts) {
   return {type: types.LOAD_POST, posts}
@@ -6,16 +6,23 @@ export function fetchPostSuccess(posts) {
 
 export function fetchPosts() {
   return function(dispatch) {
-    const url = `${process.env.REACT_APP_BACKEND}posts`
-    console.log('fetching from url', url);
+    // setTimeout(()=> {
+      const url = `${process.env.REACT_APP_BACKEND}posts`
+      console.log('fetching from url', url);
 
-     return fetch(url, { headers: { 'Authorization': 'bambambam' }})
+      return fetch(url, { headers: { 'Authorization': 'bambambam' }})
       .then(posts => {
         posts = posts.json()
-        dispatch(fetchPostSuccess(posts))
-        console.log("api posts", posts)
+
+        posts.then((data)=>{
+          console.log("data", data);
+          dispatch(fetchPostSuccess(data))
+        })
       }).catch(error => {
         throw(error)
       })
+
+    // }, 1)
+
   }
 }

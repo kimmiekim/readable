@@ -1,4 +1,4 @@
-import { ADD_COMMENT, EDIT_COMMENT, REMOVE_COMMENT } from '../actions'
+import { ADD_COMMENT, EDIT_COMMENT, REMOVE_COMMENT } from '../actions/actionTypes'
 
 function comment(state, action){
   const { comment, parentId } = action

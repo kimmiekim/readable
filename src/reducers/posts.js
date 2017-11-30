@@ -1,4 +1,4 @@
-import { ADD_POST, EDIT_POST, LOAD_POST } from '../actions'
+import { ADD_POST, EDIT_POST, LOAD_POST } from '../actions/actionTypes'
 
 function posts(state, action){
   const { title, body, author, category, posts } = action
@@ -10,7 +10,7 @@ function posts(state, action){
       // }
       // return posts
       return action.posts
-      console.log("action posts", action.posts)
+      console.log("reducer posts", action.posts)
 
     case ADD_POST:
       return {}

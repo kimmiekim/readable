@@ -1,25 +1,26 @@
 import React from 'react'
 
-const Post = (props) => {
+const Post = ({post}) => {
   return (
-    <div className = "posting">
-      <div className= "image">
-        <img src="http://placekitten.com/500/300" />
+    <div className="post-box">
+      <div className="post-likes">
+        <h1>{ post.voteScore }</h1>
       </div>
-      <div className="comment-box">
-        <div className="post-likes">
-          <h1>&hearts;</h1>
-        </div>
-        <ul className="comment-list">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
+      <div className="post-info">
+        <h1>{ post.title }</h1>
+        <h3>{ post.author }</h3>
       </div>
+      <ul className="comment-list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
     </div>
-    )
+  )
 }
+
+
 
 
 export default Post
