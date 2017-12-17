@@ -28,20 +28,19 @@ export function fetchPosts() {
   }
 }
 
-export function fetchCommentsSuccess(comment){
-  return {type: types.LOAD_COMMENT, comment}
+export function fetchCommentsSuccess(comments){
+  return {type: types.LOAD_COMMENT, comments}
 }
 
 export function fetchComments(parentId) {
-  return function(dispatch){
+  // return function(dispatch){
     return fetch(`${url}posts/${parentId}/comments`, {headers})
-    .then(comments => {
-      // comments.json()
-      comments.json().then(data => {
-        dispatch(fetchCommentsSuccess(data))
-      })
-    }).catch(error => {
-      throw(error)
-    })
-  }
+    .then(comments =>
+      comments.json()
+      // comments.json().then(data => {
+      //   dispatch(fetchCommentsSuccess(data))
+      // })
+      // console.log("comments hello?", comments.body)
+    )
+  // }
 }

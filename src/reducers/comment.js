@@ -6,8 +6,8 @@ function comment(state={}, action){
   switch (action.type){
     case LOAD_COMMENT:
       // return Object.assign({}, state, {[parentId]: comments})
-      return {...state, comments: action.comments}
-      // return Object.assign({}, state, {[parentId]: comments})
+      return {...state, comments: comments}
+      // return Object.assign({}, state, {comments: comments})
     case ADD_COMMENT:
       return {}
 
