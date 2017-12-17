@@ -23,6 +23,8 @@ class App extends Component {
             <div className = "posting">
               <div className= "content">
                 {console.log("checking props:", posts.posts)}
+                
+
               </div>
               { Array.isArray(posts.posts)? posts.posts.map((post)  => (
                     <Post post={post} key={post.id}/>

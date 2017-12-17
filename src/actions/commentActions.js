@@ -13,6 +13,11 @@ export function loadComment({parentId, comments}){
     parentId,
     comments
   }
+  // return {
+  //   type: API.fetchComments(parentId),
+  //   parentId,
+  //   comments
+  // }
 }
 
 export function editPost({title, body, author, category}) {

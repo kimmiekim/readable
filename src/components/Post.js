@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Comment from './Comment'
 import { fetchComments } from '../api/api'
-import * as actions from '../actions/commentActions'
+import { loadComment } from '../actions/commentActions'
 import * as API from '../api/api'
 
 class Post extends Component{
   componentDidMount() {
     // actions.loadComment(this.props.post.id)
     // console.log("checking",   actions.loadComment(this.props.post.id))
-    API.fetchComments(this.props.post.id)
+    // API.fetchComments(this.props.post.id)
+    this.props.loadComment(this.props.post.id)
     console.log("checking comments", this.props)
 
   }
@@ -45,5 +47,9 @@ function mapStateToProps({comments}, {post}) {
   }
 }
 
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({loadComment: loadComment}, dispatch)
+}
 
-export default connect(mapStateToProps, actions)(Post)
+
+export default connect(mapStateToProps, matchDispatchToProps)(Post)
