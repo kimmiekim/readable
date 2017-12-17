@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #16ffbd;
 }
 
 .App-logo {
@@ -26,12 +27,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+h1 {
+  color: #f070a1;
+}
+h1 a{
+  color: #c34271;
+  text-decoration: none;
+  text-align: center;
+  font-family: cursive;
+  font-size: 2em;
+}
 .posting {
   display: flex;
   flex-direction: row;
 }
-
+.post-box {
+  border: 3px solid #eee;
+  padding: 20px;
+  margin: 30px;
+}
 .comment-list {
   list-style-type: none;
 }

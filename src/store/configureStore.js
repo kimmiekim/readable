@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from '../reducers'
 import thunk from 'redux-thunk'
 
@@ -10,11 +10,16 @@ const logger = store => next => action => {
   console.groupEnd(action.type)
   return result
 }
+const initialState = [];
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
 
 export default function configureStore(initialState){
   return createStore(
       rootReducer,
       initialState,
-      applyMiddleware(logger, thunk)
+      composeEnhancers(
+        applyMiddleware(logger, thunk)
+      )
   )
 }

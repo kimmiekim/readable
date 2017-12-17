@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
 
-import { fetchPosts } from './actions/api'
+import { fetchPosts, fetchComments } from './api/api'
 import configureStore from './store/configureStore'
 
 const store = configureStore()
@@ -28,6 +28,7 @@ const store = configureStore()
 //   applyMiddleware(logger, thunk)
 // )
 store.dispatch(fetchPosts())
+// store.dispatch(fetchComments('8xf0y6ziyjabvozdd253nd'))
 
 console.log("store is: ",store.getState)
 

@@ -10,29 +10,24 @@ import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class App extends Component {
-
-  postRow(post, index) {
-    return <div key={index}> {post.title} </div>
-  }
-
   render() {
     const posts = this.props
     return (
       <div className="App">
         <Route exact path = "/" render ={()=>(
           // <PostList />
-
-          <div className = "posting">
+          <div>
             <h1>
               <Link to="/">Readable</Link>
             </h1>
-            <div className= "content">
-              {/* {this.props.posts.map(this.postRow)} */}
-              {console.log("checking props:", posts.posts)}
+            <div className = "posting">
+              <div className= "content">
+                {console.log("checking props:", posts.posts)}
+              </div>
+              { Array.isArray(posts.posts)? posts.posts.map((post)  => (
+                    <Post post={post} key={post.id}/>
+                  )): null }
             </div>
-            { Array.isArray(posts.posts)? posts.posts.map((post)  => (
-                  <Post post={post} />
-                )): null }
           </div>
 
         )} />
@@ -47,7 +42,8 @@ class App extends Component {
 
 function mapStateToProps(state, ownProps){
   return {
-    posts: state.posts
+    posts: state.posts,
+    comments: state.comments
     // state here refers to our store, and this is how we pass down store props down to the component
   }
 }

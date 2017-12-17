@@ -1,11 +1,15 @@
-import { ADD_COMMENT, EDIT_COMMENT, REMOVE_COMMENT } from '../actions/actionTypes'
+import { LOAD_COMMENT, ADD_COMMENT, EDIT_COMMENT, REMOVE_COMMENT } from '../actions/actionTypes'
 
-function comment(state, action){
-  const { comment, parentId } = action
+function comment(state={}, action){
+  const { comments, parentId, commentId } = action
 
   switch (action.type){
+    case LOAD_COMMENT:
+      // console.log("parent id: ", action)
+      return Object.assign({}, state, {[parentId]: comments})
+      // return action.comment
+      // return Object.assign({}, state, {[parentId]: comments})
     case ADD_COMMENT:
-    console.log(state)
       return {}
 
     case EDIT_COMMENT:
