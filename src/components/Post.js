@@ -2,23 +2,24 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Comment from './Comment'
-import { fetchComments } from '../api/api'
+
 import { loadComment } from '../actions/commentActions'
-import * as API from '../api/api'
+import { fetchComments } from '../api/api'
 
 class Post extends Component{
   componentDidMount() {
     // actions.loadComment(this.props.post.id)
     // console.log("checking",   actions.loadComment(this.props.post.id))
     // API.fetchComments(this.props.post.id)
-    this.props.loadComment(this.props.post.id)
-    console.log("checking comments", this.props)
 
+    this.props.fetchComments(this.props.post.id)
+    // console.log("checking comments", this.props)
+    // console.log("fetchComments", fetchComments(this.props.post.id))
   }
 
   render(){
-    const { post, comments } = this.props
-    {console.log("post working??",comments)}
+    const { post } = this.props
+
 
     return (
       <div className="post-box">
@@ -48,7 +49,7 @@ function mapStateToProps({comments}, {post}) {
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({loadComment: loadComment}, dispatch)
+  return bindActionCreators({fetchComments: fetchComments}, dispatch)
 }
 
 

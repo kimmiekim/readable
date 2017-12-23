@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
 
-import { fetchPosts, fetchComments } from './api/api'
+import { fetchPosts } from './api/api'
 import configureStore from './store/configureStore'
 
 const store = configureStore()

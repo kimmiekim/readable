@@ -1,19 +1,19 @@
 import * as types from './actionTypes'
-import * as API from '../api/api'
+// import * as API from '../api/api'
 
-export function loadComment(parentId){
-  return (dispatch) => {
-    API.fetchComments(parentId).then(comments => {
-      console.log("hello?", comments)
-      dispatch({ type: types.LOAD_COMMENT, parentId, comments })
-    })
-
-  }
-  // return {
-  //   type: types.LOAD_COMMENT,
-  //   parentId,
-  //   comments
+export function loadComment(parentId, comments){
+  // return (dispatch) => {
+  //   API.fetchComments(parentId).then(comments => {
+  //     console.log("hello?", comments)
+  //     dispatch({ type: types.LOAD_COMMENT, parentId, comments })
+  //   })
+  //
   // }
+  return {
+    type: types.LOAD_COMMENT,
+    parentId,
+    comments
+  }
 
 }
 
