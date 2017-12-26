@@ -1,6 +1,6 @@
 import { ADD_POST, EDIT_POST, LOAD_POST, REMOVE_POST } from '../actions/actionTypes'
 
-function posts(state, action){
+function posts(state = {}, action){
   const { title, body, author, category, posts } = action
 
   switch (action.type){
@@ -27,7 +27,7 @@ function posts(state, action){
     case REMOVE_POST:
       return []
     default:
-      return []
+      return state
   }
 }
 
