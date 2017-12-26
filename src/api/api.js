@@ -37,9 +37,6 @@ export function fetchComments(parentId) {
   return function(dispatch){
     return fetch(`${url}posts/${parentId}/comments`, {headers})
     .then(comments => {
-
-        // dispatch(fetchCommentsSuccess(parentId, comments))
-
       comments = comments.json()
       console.log("comments hello?", comments)
       comments.then(data => {

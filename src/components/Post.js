@@ -8,13 +8,7 @@ import { fetchComments } from '../api/api'
 
 class Post extends Component{
   componentDidMount() {
-    // actions.loadComment(this.props.post.id)
-    // console.log("checking",   actions.loadComment(this.props.post.id))
-    // API.fetchComments(this.props.post.id)
-
     this.props.fetchComments(this.props.post.id)
-    // console.log("checking comments", this.props)
-    // console.log("fetchComments", fetchComments(this.props.post.id))
   }
 
   render(){
@@ -48,9 +42,9 @@ function mapStateToProps({comments}, {post}) {
   }
 }
 
-function matchDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch){
   return bindActionCreators({fetchComments: fetchComments}, dispatch)
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(Post)
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
