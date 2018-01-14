@@ -1,11 +1,11 @@
 import { LOAD_COMMENT, ADD_COMMENT, EDIT_COMMENT, REMOVE_COMMENT } from '../actions/actionTypes'
 
-function comment(state ={}, action){
+function comments(state ={}, action){
   const { comments, parentId, commentId } = action
 
   switch (action.type){
     case LOAD_COMMENT:
-      return {...state, [parentId]: action.comments}
+      return [...state, ...comments]
     case ADD_COMMENT:
       return {...state}
     case EDIT_COMMENT:
@@ -17,4 +17,4 @@ function comment(state ={}, action){
   }
 }
 
-export default comment
+export default comments

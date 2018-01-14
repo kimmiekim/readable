@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 import posts from './posts'
-import comment from './comment'
+import comments from './comments'
 
 const rootReducer = combineReducers({
   posts,
-  comment,
+  comments,
   routing: routerReducer
 })
 

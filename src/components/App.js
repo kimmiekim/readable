@@ -7,33 +7,31 @@ import Post from './Post'
 import Comment from './Comment'
 import PostList from './PostList'
 
-// import { loadComment } from '../actions/commentActions'
-// import { fetchComments } from '../api/api'
 
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class App extends Component {
 
+  componentDidMount() {
+    console.log("testing props form App: ", this.props)
+
+  }
   render() {
     const posts = this.props
     return (
       <div className="App">
         <Route exact path = "/" render ={()=>(
-          // <PostList />
           <div>
             <h1>
               <Link to="/">Readable</Link>
             </h1>
             <div className = "posting">
               <div className= "content">
-                {console.log("checking props:", posts.posts)}
-
-
+                {/* {console.log("checking props:", posts.posts)} */}
               </div>
               { Array.isArray(posts.posts)? posts.posts.map((post)  => (
                     <Post post={post} key={post.id}/>
-
                   )): null }
             </div>
           </div>
@@ -51,7 +49,8 @@ class App extends Component {
 function mapStateToProps(state, ownProps){
   return {
     posts: state.posts,
-    comments: state.comments
+    // comments: state.comments
+
     // state here refers to our store, and this is how we pass down store props down to the component
   }
 }

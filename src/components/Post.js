@@ -7,13 +7,14 @@ import { loadComment } from '../actions/commentActions'
 import { fetchComments } from '../api/api'
 
 class Post extends Component{
-  componentDidMount() {
-    this.props.fetchComments(this.props.post.id)
-  }
+  // componentWillMount() {
+  //   this.props.fetchComments(this.props.post.id)
+  //   console.log("testing props form post component: ", this.props)
+  //
+  // }
 
   render(){
     const { post } = this.props
-
 
     return (
       <div className="post-box">
@@ -25,26 +26,31 @@ class Post extends Component{
           <p>author: { post.author }</p>
           <p>body: { post.body } </p>
 
-        </div>
         <ul className="comment-list">
-          {/* <li><Comment parentId = {post.parentId} /></li> */}
-          {/* {console.log("comment working?", comments)} */}
-          {/* {console.log("testing comments", comment)} */}
+          {/* {comments.comments? comments.comments.map(c => console.log(c)): null}
+
+          {comments.comments? comments.comments.map(c => {
+              c.filter(c.Parentid === post.is)
+
+          }): null} */}
+          <Comment parentId = {post.id} />
         </ul>
+      </div>
       </div>
     )
   }
 }
 
-function mapStateToProps({comments}, {post}) {
+{/* function mapStateToProps({comments, post}) {
+  console.log("comments are :",comments)
   return {
-    comments: comments
+    comments
   }
 }
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({fetchComments: fetchComments}, dispatch)
-}
+} */}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post)
+export default connect()(Post)
